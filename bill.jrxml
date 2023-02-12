@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bill" language="groovy" pageWidth="226" pageHeight="842" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ab4a901-09c1-443d-8280-fccbd476b14f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="INV_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cart.`cartid` AS cart_cartid,
+     cart.`inid` AS cart_inid,
+     cart.`product_name` AS cart_product_name,
+     cart.`bar_code` AS cart_bar_code,
+     cart.`qty` AS cart_qty,
+     cart.`uniit_price` AS cart_uniit_price,
+     cart.`total_price` AS cart_total_price,
+     sales.`saleid` AS sales_saleid,
+     sales.`inid` AS sales_inid,
+     sales.`total_qty` AS sales_total_qty,
+     sales.`total_bill` AS sales_total_bill,
+     sales.`status` AS sales_status,
+     sales.`balance` AS sales_balance,
+     sales.`date_s` AS sales_date_s,
+     sales.`time_s` AS sales_time_s
+FROM
+     `cart` cart INNER JOIN `sales` sales ON cart.`inid` = sales.`inid`
+WHERE
+     cart.`inid` = $P{INV_ID}]]>
+	</queryString>
+	<field name="cart_cartid" class="java.lang.Integer"/>
+	<field name="cart_inid" class="java.lang.Integer"/>
+	<field name="cart_product_name" class="java.lang.String"/>
+	<field name="cart_bar_code" class="java.lang.String"/>
+	<field name="cart_qty" class="java.lang.String"/>
+	<field name="cart_uniit_price" class="java.lang.String"/>
+	<field name="cart_total_price" class="java.lang.String"/>
+	<field name="sales_saleid" class="java.lang.Integer"/>
+	<field name="sales_inid" class="java.lang.Integer"/>
+	<field name="sales_total_qty" class="java.lang.String"/>
+	<field name="sales_total_bill" class="java.lang.String"/>
+	<field name="sales_status" class="java.lang.String"/>
+	<field name="sales_balance" class="java.lang.String"/>
+	<field name="sales_date_s" class="java.lang.String"/>
+	<field name="sales_time_s" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="291" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="133" width="186" height="20" uuid="19c0b3bd-0400-469d-9826-e8ba417d4c9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14"/>
+				</textElement>
+				<text><![CDATA[JAYALANKA GRINDING MILLS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="152" width="186" height="20" uuid="5e56bbdf-5828-48f7-8cf5-a9e8b079340a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[****WELLCOME TO JGM****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="171" width="186" height="20" uuid="cbbb2933-5ef4-44cb-aa44-c3016a1a125d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[NO : 14 Sebastian Street,Colombo12]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="190" width="186" height="20" uuid="c8afa182-8a84-474c-98fa-6b7a37a64240"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[TEL : 011 4 72 04 51/ 011 2 44 45 38]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="209" width="186" height="20" uuid="7e7eb536-8206-4e9b-a9d1-5d7d7ac7d9d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Mob.NO : 071 66 31 895]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="236" width="81" height="15" uuid="bb1a4c3c-4a6b-4ef1-b28e-d3f409034cb5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_date_s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="236" width="83" height="15" uuid="907bbb39-9ebe-4e9e-8f4b-b235e1e4a2dd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_time_s}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="251" width="146" height="15" uuid="cfe84bb9-d0a0-4d18-8690-d5dab55a3e74"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_inid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="251" width="38" height="15" uuid="ab995b6f-5bd6-4e88-b1b6-2018533cde62"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Inv.NO -]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="232" width="186" height="1" uuid="5bd407d9-8d2f-45b6-a993-7ef5b76db3f6"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="269" width="186" height="1" uuid="cf57311b-732f-460c-a7e8-8acc88993335"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="273" width="74" height="13" uuid="9e6f2842-1227-42db-8a03-5c4bf5180414"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="273" width="35" height="13" uuid="50ae5682-804d-4600-a61d-2bceb3d472e6"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[PRICE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="289" width="186" height="1" uuid="ceef595b-19b1-4a7d-b9d4-bc50bb111466"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="0" y="-15" width="200" height="148" uuid="b0997fdb-b175-4a01-89dd-106557e5028f"/>
+				<imageExpression><![CDATA["C:\\Users\\Acer\\Desktop\\Untitled.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="186" height="14" uuid="b5ab6290-23b6-4a33-881d-aac5d670028d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Stencil"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cart_product_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="16" width="53" height="15" uuid="bd3cbc75-e1fc-4ee4-9187-6935e9de081a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cart_uniit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="16" width="40" height="15" uuid="7710f613-ec2f-48f1-ba14-9c6340b9820a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cart_qty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="53" y="16" width="10" height="15" uuid="901bd095-3647-4e70-8c64-52a0b2cc03d9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[*]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="103" y="16" width="83" height="15" uuid="1cf91d36-4670-43b2-99d3-1e03084c1285"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cart_total_price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="126" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="186" height="1" uuid="b0d5bc83-c5a8-40e4-ae6e-e89bf504d464"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="38" y="4" width="84" height="13" uuid="8158b197-a8a5-4c23-a0cb-2ac5f6326218"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[TOTAL AMOUNT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="21" width="84" height="13" uuid="2630ee96-5e7c-4ded-a0d8-0689572fd7b7"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[BALANCE :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="122" y="4" width="64" height="13" uuid="0ba1d43d-f4d6-4183-9d4a-41c58b7b2892"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_total_bill}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="21" width="64" height="13" uuid="a552133d-0e6a-4d47-8c79-36d337942e78"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_balance}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="35" width="186" height="1" uuid="fb9a7fbc-2c49-4d23-88f6-010c63a159b7"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="37" width="186" height="1" uuid="fff6914a-8e53-4ae0-9de7-1320b78d74e8"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="40" width="186" height="20" uuid="e8ce230e-b036-40c1-b4f2-e798dfb87f33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[****HAVE A NICE DAY****]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="186" height="20" uuid="e5af478c-d6ad-46de-bf48-7d5e2aa3b1ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[THANK YOU COME AGAIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="64" height="16" uuid="3949700f-5921-4752-8e32-c15fdd034fa1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[IT PROVIDER:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="79" width="123" height="16" uuid="f5b522bf-5a0b-4e77-b820-751ef9dd4f17"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[CIOA PRODUCTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="94" width="123" height="16" uuid="3785d1f6-6af4-4773-bc38-72162506caeb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[071 75 98 956]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="109" width="123" height="16" uuid="deacbbb5-294a-4920-a9cc-d454f700a3a9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[lahiruthraka97@gmail.com]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
